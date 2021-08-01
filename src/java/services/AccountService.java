@@ -22,7 +22,7 @@ public class AccountService {
                 GmailService.sendMail(email, "Successful Login", body, false);
                 
                 
-                
+                /*
                 String to = user.getEmail();
                 String subject = "Notes App Login";
                 String template = path + "/emailtemplates/login.html";
@@ -33,12 +33,43 @@ public class AccountService {
                 tags.put("date", (new java.util.Date()).toString());
                 
                 GmailService.sendMail(to, subject, template, tags);
+                */
+                return user;
+            }
+        } catch (Exception e) {
+        }
+        
+        return null;}
+ 
+    public User forgotPassword(String email,String path){
+ 
+        UserService us = new UserService();
+        
+        try {
+            User user = us.getByEmail(email);
+            if (email.equals(user.getEmail())) {
+                
+                
+                
+                
+                String to = user.getEmail();
+                String subject = "Forgot password: Note Keepr ";
+                String template = path + "/emailtemplates/resetTemplate.html";
+                
+                HashMap<String, String> tags = new HashMap<>();
+                tags.put("firstname", user.getFirstName());
+                tags.put("lastname", user.getLastName());
+                tags.put("username", user.getEmail());
+                tags.put("password", user.getPassword());
+                
+                GmailService.sendMail(to, subject, template, tags);
                 
                 return user;
             }
         } catch (Exception e) {
         }
         
-        return null;
+        return null;}
+ 
     }
-}
+

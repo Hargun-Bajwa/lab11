@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +14,6 @@
             password: <input type="password" name="password"><br>
             <input type="submit" value="Sign in">
         </form>
+            <a href="forgot">Forgot Password</a>
     </body>
 </html>
